@@ -1,43 +1,35 @@
 public class Main {
     public static void main(String[] args) {
         Coche coche = new Coche();
-        coche.setSonido("BRRR");
-        System.out.println(coche.getSonido());
+        coche.diHola();
 
-        Moto moto = new Moto();
-        moto.setSonido("BRRR");
-        System.out.println(moto.getSonido());
+        coche.sumaNumeros(3,4);
+        coche.sumaNumeros((float)3, (float)4);
+        coche.sumaNumeros(3.1,6.9);
+    }
+}
+class Vehiculo{
+    public void diHola(){
+        System.out.println("Hola!");
     }
 }
 
-abstract class Vehiculo{
-    int velocidadMaxima;
-    String matricula;
-    String sonido;
-
-    public Vehiculo(){
-        System.out.println("Este es el constructor ");
-    }
-
-    abstract public String getSonido();
-    abstract public void setSonido(String sonido);
-}
-
-//Una final class es una clase de la cual no vamos a poder heredar.
 class Coche extends Vehiculo{
-    public String getSonido(){
-        return "Soy un SUPERSONIDO " + this.sonido;
+    public void diHola(){
+        System.out.println("Soy un coche");
     }
-    public void setSonido(String sonido){
-        this.sonido = sonido;
-    }
-}
 
-class Moto extends Vehiculo{
-    public String getSonido(){
-        return "Soy un sonidillo de moto " +  this.sonido;
+    public int sumaNumeros(int a, int b){
+        System.out.println("INT");
+        return a + b;
     }
-    public void setSonido(String sonido){
-        this.sonido = sonido;
+
+    public float sumaNumeros(float a, float b){
+        System.out.println("FLOAT");
+       return a + b * 1;
+    }
+
+    public void sumaNumeros(double a, double b){
+        System.out.println("Resultado: " + (a + b));
     }
 }
