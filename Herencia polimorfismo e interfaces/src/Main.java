@@ -1,33 +1,43 @@
 public class Main {
     public static void main(String[] args) {
         Coche coche = new Coche();
-        coche.velocidadMaxima = 170;
-        coche.matricula = "UYKL98";
+        coche.setSonido("BRRR");
+        System.out.println(coche.getSonido());
 
-        CocheElectrico cocheElectrico = new CocheElectrico();
-        cocheElectrico.velocidadMaxima = 200;
-        cocheElectrico.matricula = "UOLG67";
+        Moto moto = new Moto();
+        moto.setSonido("BRRR");
+        System.out.println(moto.getSonido());
     }
 }
 
-class Vehiculo{
+abstract class Vehiculo{
     int velocidadMaxima;
     String matricula;
+    String sonido;
 
-    public boolean compruebMatricula (String matricula){
-        if (matricula == "XXXX"){
-            return true;
-        }else {
-            return false;
-        }
+    public Vehiculo(){
+        System.out.println("Este es el constructor ");
     }
+
+    abstract public String getSonido();
+    abstract public void setSonido(String sonido);
 }
 
 //Una final class es una clase de la cual no vamos a poder heredar.
 class Coche extends Vehiculo{
-
+    public String getSonido(){
+        return "Soy un SUPERSONIDO " + this.sonido;
+    }
+    public void setSonido(String sonido){
+        this.sonido = sonido;
+    }
 }
 
-class CocheElectrico extends Coche{
-
+class Moto extends Vehiculo{
+    public String getSonido(){
+        return "Soy un sonidillo de moto " +  this.sonido;
+    }
+    public void setSonido(String sonido){
+        this.sonido = sonido;
+    }
 }
